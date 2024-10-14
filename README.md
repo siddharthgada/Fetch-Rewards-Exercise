@@ -1,6 +1,6 @@
 What are the requirements?:
 - Review unstructured JSON data and diagram a new structured relational data model (https://github.com/siddharthgada/fetch_rewards/blob/main/ER_Diagram.png)
-- Generate a query that answers a predetermined business question: **All the queries are in the Word document with the results and notes.**
+- Generate a query that answers a predetermined business question: **All the queries are in the Word document with results and notes.**
 - Generate a query to capture data quality issues against the new structured relational data model: **All the quality issues are mentioned in the Word document with examples and can go through the Python file for code reference.**
 - Write a short email or Slack message to the business stakeholder: **Email is in the Word document posted.**
 
