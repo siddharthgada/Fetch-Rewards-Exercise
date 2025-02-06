@@ -4,7 +4,7 @@ I have decided to move the "itemizedReceipt" table, which corresponds to the "re
 The primary keys and foreign keys are denoted in the first column of each table. While I could have flattened the entire receipts.json into a single table, 
 I opted to maintain a cleaner structure by using a junction table to separate the items. This approach allows for better organization of data
 and relationships between the tables, enhancing flexibility and normalization in our database schema.
-![ALT TEXT](fetch_rewards/images/Query 1 Results.png)
+![fetch_rewards](images/Query 1 Results.png)
 
 Notes:
 1.	ItemizedReceipt table is a Junction Table – Brand and Receipt Table had a many to many relationship.
