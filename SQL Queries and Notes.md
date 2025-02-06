@@ -49,6 +49,8 @@ ORDER BY
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering average spend from receipts.
 
+![fetch_rewards](images/Query3Results.png)
+
 # Query 4: When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’,
 which is greater?
 ```
@@ -64,6 +66,8 @@ ORDER BY
 ## Notes:
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering total number of items purchased from receipts.
+
+![fetch_rewards](images/Query4Results.png)
 
 # Query 5: Which brand has the most spend among users who were created within the past 6 months?
 ```
@@ -99,6 +103,8 @@ LIMIT 5;  -- Get the brand with the highest spend
 3.	Used Inner join to show results which have a brand name and a barcode. There are a lot of brands with a 
     higher spend than $196.98 but do not have a brand name, only a barcode. It would be useful for the business to find them.
 4.	From this result we can see that “Cracker Barrel Cheese” has the most spend, $196.88.
+
+![fetch_rewards](images/Query5Results.png)
 
 # Query 6: Which brand has the most transactions among users who were created within the past 6 months?
 ```
@@ -137,3 +143,5 @@ LIMIT 1;  -- Get the brand with the highest number of transactions
     transaction was mentioned in the question and I assume one transaction is an entire receipt irrespective of the 
     times an item was bought.
 5.	From this result we can see that “Tostitos” has the most transaction count, 23.
+
+![fetch_rewards](images/Query6Results.png)
