@@ -1,5 +1,5 @@
 # Query 1: What are the top 5 brands by receipts scanned for most recent month?
-'''
+```
 SELECT 
     IFNULL(b.name, "Brand Unknown") AS brand_name, i.barcode,
     SUM (i.quantityPurchased) AS timesBought
@@ -18,7 +18,7 @@ GROUP BY
 ORDER BY 
     timesBought DESC
 LIMIT 5;  -- Get the Top 5 brands with the highest number of transactions	
- '''
+ ```
 Notes: 
 1.	“dateScanned” attributed converted from unix time to datetime format, hence the name “dateScanned_converted”.
 2.	No receipts scanned in the most recent month (October 2024), so I have calculated the most recent month in the column and used that.
