@@ -168,20 +168,21 @@ LIMIT 1;  -- Get the brand with the highest number of transactions
 5.	From this result we can see that “Tostitos” has the most transaction count, 23.
 
 ## Data quality issues encountered in the new structured relational data model
+
 1.	Missing Data: 
 There are many barcodes without any brand name, assuming the barcode in the “rewardsReceiptItemList” column in the receipt table is the same barcode in the brand table. The predetermined business questions had me calculate top brands; lot of the top brands from the query results did not have a name but only a barcode. There are 553 barcodes without a match for brand name. I have attached a snippet for some of the barcodes.
 
 ![fetch_rewards](images/MissingData.png)
 
-3.	Many receipts were empty, they only had IDs and date with no other useful information.
+2.	Many receipts were empty, they only had IDs and date with no other useful information.
 
 ![fetch_rewards](images/EmptyReceipts.png)
 
-4.	Redundancy: There were many duplicate User Ids in the Users data, making it hard to join tables.
+3.	Redundancy: There were many duplicate User Ids in the Users data, making it hard to join tables.
 
 ![fetch_rewards](images/Redundancy.png)
 
-5.	While answering the business question : When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater? and When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater? There is no ‘Accepted’ status in the ‘rewardsReceiptStatus’ column. Only ‘Finished’, ‘Rejected’, ‘Pending’, ‘Flagged’.
+4.	While answering the business question : When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater? and When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater? There is no ‘Accepted’ status in the ‘rewardsReceiptStatus’ column. Only ‘Finished’, ‘Rejected’, ‘Pending’, ‘Flagged’.
 
 ![fetch_rewards](images/RewardReceiptStatus_variableIssue.png)
 
