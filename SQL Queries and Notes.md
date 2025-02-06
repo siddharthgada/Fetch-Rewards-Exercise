@@ -1,4 +1,18 @@
-# Query 1: What are the top 5 brands by receipts scanned for most recent month?
+# Fetch Rewards Exercise
+## New Structured Relational Data Model
+I have decided to move the "itemizedReceipt" table, which corresponds to the "rewardsReceiptItemList" attribute from our receipts.json file. The primary keys and foreign keys are denoted in the first column of each table. While I could have flattened the entire receipts.json into a single table, I opted to maintain a cleaner structure by using a junction table to separate the items. This approach allows for better organization of data and relationships between the tables, enhancing flexibility and normalization in our database schema.
+
+### Notes:
+1.	ItemizedReceipt table is a Junction Table – Brand and Receipt Table had a many to many relationship.
+2.	Since “barcode” attribute is unique for each brand item, I have used it to establish a relation between the Brand and ItemReceipt tables in the queries.
+3.	“_id” and “barcode” attributes together are a composite primary key for the ItemizedReceipt table.
+4.	“cpg” attribute was a dictionary array, which is broken down into “cpg_id” and “cpg_reference” for granularity.
+5.	Could have made a table ‘Category” but did not have the data for it – need a primary key.
+
+## Queries to answer predetermined business questions
+I have built a database and ran all the queries using Google BigQuery (GoogleSQL).
+
+## Query 1: What are the top 5 brands by receipts scanned for most recent month?
 ```
 SELECT 
     IFNULL(b.name, "Brand Unknown") AS brand_name, i.barcode,
@@ -19,7 +33,7 @@ ORDER BY
     timesBought DESC
 LIMIT 5;  -- Get the Top 5 brands with the highest number of transactions	
  ```
-## Notes: 
+### Notes: 
 1.	“dateScanned” attributed converted from unix time to datetime format, hence the name “dateScanned_converted”.
 2.	No receipts scanned in the most recent month (October 2024), so I have calculated the most recent month in the column and used that.
 3.	Noticing that the most recent month did not have many receipts scanned and didn’t get the top 5 results, 
@@ -34,7 +48,7 @@ LIMIT 5;  -- Get the Top 5 brands with the highest number of transactions
   	
 ![fetch_rewards](images/Query1Results.png)
 
-# Query 3: When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
+## Query 3: When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
 ```
 SELECT 
     rewardsReceiptStatus, round(AVG(totalSpent), 2) AS avgSpending
@@ -45,13 +59,13 @@ GROUP BY
 ORDER BY 
     avgSpending DESC;
  ```
-## Notes:
+### Notes:
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering average spend from receipts.
 
 ![fetch_rewards](images/Query3Results.png)
 
-# Query 4: When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’,
+## Query 4: When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’,
 which is greater?
 ```
 SELECT 
@@ -63,13 +77,13 @@ GROUP BY
 ORDER BY 
     itemPurchasedCount DESC;
  ```
-## Notes:
+### Notes:
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering total number of items purchased from receipts.
 
 ![fetch_rewards](images/Query4Results.png)
 
-# Query 5: Which brand has the most spend among users who were created within the past 6 months?
+## Query 5: Which brand has the most spend among users who were created within the past 6 months?
 ```
 SELECT 
     b.name AS brand_name, i.barcode,
@@ -96,7 +110,7 @@ ORDER BY
     Amount DESC
 LIMIT 5;  -- Get the brand with the highest spend
  ```
-## Notes:
+### Notes:
 1.	Since the data is from 2021, past 6 month is calculated from the latest date in the “createdDate_converted”. 
     Assumption was made to have results.
 2.	“createdDate” attributed converted from unix time to datetime format, hence the name “createdDate_converted”.
@@ -106,7 +120,7 @@ LIMIT 5;  -- Get the brand with the highest spend
 
 ![fetch_rewards](images/Query5Results.png)
 
-# Query 6: Which brand has the most transactions among users who were created within the past 6 months?
+## Query 6: Which brand has the most transactions among users who were created within the past 6 months?
 ```
 SELECT 
     b.name AS brand_name, i.barcode,
@@ -133,7 +147,7 @@ ORDER BY
     transactionCount DESC
 LIMIT 1;  -- Get the brand with the highest number of transactions
 ```
-## Notes:
+### Notes:
 1.	Since the data is from 2021, past 6 month is calculated from the latest date in the “createdDate_converted”. 
     Assumption was made to have results.
 2.	“createdDate” attributed converted from unix time to datetime format, hence the name “createdDate_converted”.
