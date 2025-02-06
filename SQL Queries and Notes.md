@@ -2,14 +2,14 @@
 ## New Structured Relational Data Model
 I have decided to move the "itemizedReceipt" table, which corresponds to the "rewardsReceiptItemList" attribute from our receipts.json file. The primary keys and foreign keys are denoted in the first column of each table. While I could have flattened the entire receipts.json into a single table, I opted to maintain a cleaner structure by using a junction table to separate the items. This approach allows for better organization of data and relationships between the tables, enhancing flexibility and normalization in our database schema.
 
+![fetch_rewards](images/ER_Diagram.png)
+
 ### Notes:
 1.	ItemizedReceipt table is a Junction Table – Brand and Receipt Table had a many to many relationship.
 2.	Since “barcode” attribute is unique for each brand item, I have used it to establish a relation between the Brand and ItemReceipt tables in the queries.
 3.	“_id” and “barcode” attributes together are a composite primary key for the ItemizedReceipt table.
 4.	“cpg” attribute was a dictionary array, which is broken down into “cpg_id” and “cpg_reference” for granularity.
 5.	Could have made a table ‘Category” but did not have the data for it – need a primary key.
-
-![fetch_rewards](images/ER_Diagram.png)
 
 ## Queries to answer predetermined business questions
 I have built a database and ran all the queries using Google BigQuery (GoogleSQL).
@@ -35,6 +35,9 @@ ORDER BY
     timesBought DESC
 LIMIT 5;  -- Get the Top 5 brands with the highest number of transactions	
  ```
+
+![fetch_rewards](images/Query1Results.png)
+
 ### Notes: 
 1.	“dateScanned” attributed converted from unix time to datetime format, hence the name “dateScanned_converted”.
 2.	No receipts scanned in the most recent month (October 2024), so I have calculated the most recent month in the column and used that.
@@ -47,8 +50,6 @@ LIMIT 5;  -- Get the Top 5 brands with the highest number of transactions
 7.	Instead of keeping the brand name column null, I decided to replace it with “Brand Unknown”.
 8.	I included the barcode column since I think it is important for the business to know and acknowledge them even 
     though there is no brand name for them since they were the top 5 barcodes with highest number of transactions.
-  	
-![fetch_rewards](images/Query1Results.png)
 
 ## Query 3: When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
 ```
@@ -61,11 +62,12 @@ GROUP BY
 ORDER BY 
     avgSpending DESC;
  ```
+
+![fetch_rewards](images/Query3Results.png)
+
 ### Notes:
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering average spend from receipts.
-
-![fetch_rewards](images/Query3Results.png)
 
 ## Query 4: When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’,
 which is greater?
@@ -79,11 +81,12 @@ GROUP BY
 ORDER BY 
     itemPurchasedCount DESC;
  ```
+
+![fetch_rewards](images/Query4Results.png)
+
 ### Notes:
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering total number of items purchased from receipts.
-
-![fetch_rewards](images/Query4Results.png)
 
 ## Query 5: Which brand has the most spend among users who were created within the past 6 months?
 ```
@@ -112,6 +115,9 @@ ORDER BY
     Amount DESC
 LIMIT 5;  -- Get the brand with the highest spend
  ```
+
+![fetch_rewards](images/Query5Results.png)
+
 ### Notes:
 1.	Since the data is from 2021, past 6 month is calculated from the latest date in the “createdDate_converted”. 
     Assumption was made to have results.
@@ -119,8 +125,6 @@ LIMIT 5;  -- Get the brand with the highest spend
 3.	Used Inner join to show results which have a brand name and a barcode. There are a lot of brands with a 
     higher spend than $196.98 but do not have a brand name, only a barcode. It would be useful for the business to find them.
 4.	From this result we can see that “Cracker Barrel Cheese” has the most spend, $196.88.
-
-![fetch_rewards](images/Query5Results.png)
 
 ## Query 6: Which brand has the most transactions among users who were created within the past 6 months?
 ```
@@ -149,6 +153,9 @@ ORDER BY
     transactionCount DESC
 LIMIT 1;  -- Get the brand with the highest number of transactions
 ```
+
+![fetch_rewards](images/Query6Results.png)
+
 ### Notes:
 1.	Since the data is from 2021, past 6 month is calculated from the latest date in the “createdDate_converted”. 
     Assumption was made to have results.
@@ -160,4 +167,35 @@ LIMIT 1;  -- Get the brand with the highest number of transactions
     times an item was bought.
 5.	From this result we can see that “Tostitos” has the most transaction count, 23.
 
-![fetch_rewards](images/Query6Results.png)
+## Data quality issues encountered in the new structured relational data model
+1.	Missing Data: 
+There are many barcodes without any brand name, assuming the barcode in the “rewardsReceiptItemList” column in the receipt table is the same barcode in the brand table. The predetermined business questions had me calculate top brands; lot of the top brands from the query results did not have a name but only a barcode. There are 553 barcodes without a match for brand name. I have attached a snippet for some of the barcodes.
+
+![fetch_rewards](images/MissingData.png)
+
+3.	Many receipts were empty, they only had IDs and date with no other useful information.
+
+![fetch_rewards](images/EmptyReceipts.png)
+
+4.	Redundancy: There were many duplicate User Ids in the Users data, making it hard to join tables.
+
+![fetch_rewards](images/Redundancy.png)
+
+5.	While answering the business question : When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater? and When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater? There is no ‘Accepted’ status in the ‘rewardsReceiptStatus’ column. Only ‘Finished’, ‘Rejected’, ‘Pending’, ‘Flagged’.
+
+![fetch_rewards](images/RewardReceiptStatus_variableIssue.png)
+
+## Communicate with the Stakeholders
+
+Hello Stakeholders,
+
+Hi, my name is Siddharth Gada, from the Analytics Department. We have received the data, and before proceeding with the implementation, I would like to discuss a few aspects to ensure we are aligned.
+1.	I came across many empty receipts, can you give a scenario in which that is possible and if it contains any meaningful information, or can we simply disregard those receipts?
+2.	Many of the top performing brands only have barcodes and do not have a brand name, making it hard to identify those brands. Is there any way in which we can identify those brands to help the business?
+3.	We would like to have a deeper understanding of the dates, there are many gaps in the date columns, for example in the receipt table “createDate” and “dateScanned” attributes have the earliest date in 2020 but “purchaseDate” attribute has the earliest date in 2017. 
+4.	After reviewing the data, I’m confident that key concerns in production will include managing growing data volumes, maintaining query performance, and handling real-time data processing. To address these challenges, I would implement strategies like data partitioning, indexing, and query optimization to enhance performance. Cloud platforms such as AWS and GCP offer powerful tools for improving performance and analyzing data. I’d like to discuss this further in more detail.
+
+Thank you for your time, and I look forward to hearing from you.
+
+Best regards,
+Siddharth Gada
