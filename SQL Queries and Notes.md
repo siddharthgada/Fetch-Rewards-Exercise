@@ -9,6 +9,8 @@ I have decided to move the "itemizedReceipt" table, which corresponds to the "re
 4.	“cpg” attribute was a dictionary array, which is broken down into “cpg_id” and “cpg_reference” for granularity.
 5.	Could have made a table ‘Category” but did not have the data for it – need a primary key.
 
+![fetch_rewards](images/ER_Diagram.png)
+
 ## Queries to answer predetermined business questions
 I have built a database and ran all the queries using Google BigQuery (GoogleSQL).
 
