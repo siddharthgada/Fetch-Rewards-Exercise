@@ -31,6 +31,7 @@ LIMIT 5;  -- Get the Top 5 brands with the highest number of transactions
 7.	Instead of keeping the brand name column null, I decided to replace it with “Brand Unknown”.
 8.	I included the barcode column since I think it is important for the business to know and acknowledge them even 
     though there is no brand name for them since they were the top 5 barcodes with highest number of transactions.
+  	
 ![fetch_rewards](images/Query1Results.png)
 
 # Query 3: When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
