@@ -14,7 +14,7 @@ This project required transforming raw, unstructured JSON data into a structured
 1. Relational Data Model<br>
   - Reviewed unstructured JSON data and created a structured relational ER Diagram.<br>
   - Defined tables, fields, primary keys, and foreign keys for optimal data organization.<br>
-  - Diagram Link: ER Diagram<br>
+  - Diagram Link: ![Alt text of the image](https://github.com/username/repository/blob/master/img/octocat.png)<br>
 
 2. Business-Focused SQL Queries:<br>
 SQL queries were written to answer the following key business questions:<br>
