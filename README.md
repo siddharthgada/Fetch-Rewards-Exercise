@@ -9,14 +9,14 @@ This project required transforming raw, unstructured JSON data into a structured
 ✔️ Data Quality Assessment: Identifying potential inconsistencies, missing values, and anomalies.<br>
 ✔️ Stakeholder Communication: Writing a clear and concise business report.<br>
 
-📂 Project Deliverables<br>
+📂 Project Deliverables:<br>
 
 1. Relational Data Model<br>
   - Reviewed unstructured JSON data and created a structured relational ER Diagram.<br>
   - Defined tables, fields, primary keys, and foreign keys for optimal data organization.<br>
   - Diagram Link: ER Diagram<br>
 
-2. Business-Focused SQL Queries<br>
+2. Business-Focused SQL Queries:<br>
 SQL queries were written to answer the following key business questions:<br>
   - Top 5 brands by receipts scanned for the most recent month.<br>
   - Average spend comparison for 'Accepted' vs. 'Rejected' receipts.<br>
@@ -31,14 +31,14 @@ Using Python and SQL, I analyzed the dataset for potential data quality issues, 
   - Inconsistent date formats and incorrect timestamps.<br>
   - Irregularities in rewardsReceiptStatus values.<br>
 
-📊 Technologies & Tools Used
+📊 Technologies & Tools Used:
 1. SQL: Querying and analyzing structured data.
 2. Python (Pandas, NumPy): Data exploration, anomaly detection, and validation.
 3. Database Modeling: Designing relational schema for structured storage.
 4. Diagramming Tools (Visio): ER diagram creation for data structure visualization.
 5. Google BigQuery: Database creation and querying
 
-🔍 Key Learning Outcomes
+🔍 Key Learning Outcomes:<br>
 📌 Data Modeling & Normalization:<br>
   - Learned how to analyze raw JSON data and design a relational schema for a data warehouse.<br>
   - Understood the importance of primary and foreign keys in maintaining data integrity.<br>
