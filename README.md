@@ -19,11 +19,11 @@ This project required transforming raw, unstructured JSON data into a structured
 
 2. Business-Focused SQL Queries:<br>
 SQL queries were written to answer the following key business questions:<br>
-  - Top 5 brands by receipts scanned for the most recent month.<a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query1Results.png>...</a><br>
-  - Average spend comparison for 'Accepted' vs. 'Rejected' receipts.<a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query2Results.png>...</a><br>
-  - Total items purchased comparison for 'Accepted' vs. 'Rejected' receipts.<a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query3Results.png>...</a><br>
-  - Brand with the highest spend among users created within the past 6 months.<a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query4Results.png>...</a><br>
-  - Brand with the most transactions among users created within the past 6 months.<a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query5Results.png>...</a><br>
+  - Top 5 brands by receipts scanned for the most recent month. <a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query1Results.png>...</a><br>
+  - Average spend comparison for 'Accepted' vs. 'Rejected' receipts. <a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query2Results.png>...</a><br>
+  - Total items purchased comparison for 'Accepted' vs. 'Rejected' receipts. <a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query3Results.png>...</a><br>
+  - Brand with the highest spend among users created within the past 6 months. <a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query4Results.png>...</a><br>
+  - Brand with the most transactions among users created within the past 6 months. <a href=https://github.com/siddharthgada/Fetch-Rewards-Exercise/blob/main/images/Query5Results.png>...</a><br>
 
 3. Data Quality Assessment<br>
 Using Python and SQL, I analyzed the dataset for potential data quality issues, including:<br>
