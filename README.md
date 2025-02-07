@@ -1,36 +1,53 @@
-What are the requirements?:
-- Review unstructured JSON data and diagram a new structured relational data model (https://github.com/siddharthgada/fetch_rewards/blob/main/ER_Diagram.png)
-- Generate a query that answers a predetermined business question: **All the queries are in the Word document with results and notes.**
-- Generate a query to capture data quality issues against the new structured relational data model: **All the quality issues are mentioned in the Word document with examples and can go through the Python file for code reference and notes.**
-- Write a short email or Slack message to the business stakeholder: **Email is in the Word document posted.**
+# Fetch Rewards Data Modeling & Analysis
+This repository contains my solutions for the Fetch Rewards Data Modeling & Analysis Challenge, which involved structuring unstructured JSON data, writing SQL queries, identifying data quality issues, and communicating insights to stakeholders.
 
-Please let us know which SQL dialect you are using and include any code, notes, etc.. that helped you develop your answers. Showing your work can only help you!
+🚀 Project Overview
+This project required transforming raw, unstructured JSON data into a structured relational data model, writing business-focused SQL queries, and evaluating data quality issues. The key objectives included:
 
-First: Review Existing Unstructured Data and Diagram a New Structured Relational Data Model:
-Review the 3 sample data files provided below. Develop a simplified, structured, relational diagram to represent how you would model the data in a data warehouse. The diagram should show each table’s fields and the joinable keys. You can use pencil and paper, readme, or any digital drawing or diagramming tool with which you are familiar. If you can upload the text, image, or diagram into a git repository and we can read it, we will review it!
+✔️ Data Modeling: Designing a structured relational database schema based on provided sample data.
+✔️ SQL Queries: Answering business questions using optimized queries.
+✔️ Data Quality Assessment: Identifying potential inconsistencies, missing values, and anomalies.
+✔️ Stakeholder Communication: Writing a clear and concise business report.
 
-Second: Write queries that directly answer predetermined questions from a business stakeholder:
-Write SQL queries against your new structured relational data model that answer at least two of the following bullet points below of your choosing. Commit them to the git repository along with the rest of the exercise.
+📂 Project Deliverables
 
-Note: When creating your data model be mindful of the other requests being made by the business stakeholder. If you can capture more than two bullet points in your model while keeping it clean, efficient, and performant, that benefits you as well as your team.
+1. Relational Data Model
+Reviewed unstructured JSON data and created a structured relational ER Diagram.
+Defined tables, fields, primary keys, and foreign keys for optimal data organization.
+Diagram Link: ER Diagram
 
-1. What are the top 5 brands by receipts scanned for most recent month?
-2. How does the ranking of the top 5 brands by receipts scanned for the recent month compare to the ranking for the previous month?
-3. When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
-4. When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
-5. Which brand has the most spend among users who were created within the past 6 months?
-6. Which brand has the most transactions among users who were created within the past 6 months?
+2. Business-Focused SQL Queries
+SQL queries were written to answer the following key business questions:
+✅ Top 5 brands by receipts scanned for the most recent month.
+✅ Average spend comparison for 'Accepted' vs. 'Rejected' receipts.
+✅ Total items purchased comparison for 'Accepted' vs. 'Rejected' receipts.
+✅ Brand with the highest spend among users created within the past 6 months.
+✅ Brand with the most transactions among users created within the past 6 months.
 
-Third: Evaluate Data Quality Issues in the Data Provided
-Using the programming language of your choice (SQL, Python, R, Bash, etc...) identify as many data quality issues as you can. We are not expecting a full blown review of all the data provided, but instead want to know how you explore and evaluate data of questionable provenance.
+3. Data Quality Assessment
+Using Python and SQL, I analyzed the dataset for potential data quality issues, including:
+🚨 Missing or inconsistent data in key fields.
+🚨 Duplicate records and anomalies.
+🚨 Inconsistent date formats and incorrect timestamps.
+🚨 Irregularities in rewardsReceiptStatus values.
 
-Commit your code and findings to the git repository along with the rest of the exercise.
+📊 Technologies & Tools Used
+SQL: Querying and analyzing structured data.
+Python (Pandas, NumPy): Data exploration, anomaly detection, and validation.
+Database Modeling: Designing relational schema for structured storage.
+Diagramming Tools (Visio): ER diagram creation for data structure visualization.
+Google BigQuery: Database creation and querying
 
-Fourth: Communicate with Stakeholders:
-Construct an email or slack message that is understandable to a product or business leader who isn’t familiar with your day to day work. This part of the exercise should show off how you communicate and reason about data with others. Commit your answers to the git repository along with the rest of your exercise.
-
-- What questions do you have about the data?
-- How did you discover the data quality issues?
-- What do you need to know to resolve the data quality issues?
-- What other information would you need to help you optimize the data assets you're trying to create?
-- What performance and scaling concerns do you anticipate in production and how do you plan to address them?
+🔍 Key Learning Outcomes
+📌 Data Modeling & Normalization:
+  - Learned how to analyze raw JSON data and design a relational schema for a data warehouse.
+  - Understood the importance of primary and foreign keys in maintaining data integrity.
+📌 SQL Query Optimization:
+  - Gained experience in writing efficient SQL queries to extract business insights.
+  - Applied ranking functions, aggregation, and filtering to answer real-world business questions.
+📌 Data Quality Analysis:
+  - Discovered common data quality issues, such as duplicate entries, missing values, and format inconsistencies.
+  - Used Python (Pandas, NumPy) and SQL to identify and address anomalies in the dataset.
+📌 Effective Communication:
+  - Developed clear and concise business reports and email communication for non-technical stakeholders.
+  - Practised translating technical findings into actionable business recommendations.
