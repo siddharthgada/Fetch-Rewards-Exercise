@@ -51,7 +51,7 @@ LIMIT 5;  -- Get the Top 5 brands with the highest number of transactions
 8.	I included the barcode column since I think it is important for the business to know and acknowledge them even 
     though there is no brand name for them since they were the top 5 barcodes with highest number of transactions.
 
-## Query 3: When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
+## Query 2: When considering average spend from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?
 ```
 SELECT 
     rewardsReceiptStatus, round(AVG(totalSpent), 2) AS avgSpending
@@ -63,13 +63,13 @@ ORDER BY
     avgSpending DESC;
  ```
 
-![fetch_rewards](images/Query3Results.png)
+![fetch_rewards](images/Query2Results.png)
 
 ### Notes:
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering average spend from receipts.
 
-## Query 4: When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’,
+## Query 3: When considering total number of items purchased from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’,
 which is greater?
 ```
 SELECT 
@@ -82,13 +82,13 @@ ORDER BY
     itemPurchasedCount DESC;
  ```
 
-![fetch_rewards](images/Query4Results.png)
+![fetch_rewards](images/Query3Results.png)
 
 ### Notes:
 1.	Assumed “Accepted” is the same as “Finished”.
 2.	“Finished” status is greater when considering total number of items purchased from receipts.
 
-## Query 5: Which brand has the most spend among users who were created within the past 6 months?
+## Query 4: Which brand has the most spend among users who were created within the past 6 months?
 ```
 SELECT 
     b.name AS brand_name, i.barcode,
@@ -116,7 +116,7 @@ ORDER BY
 LIMIT 5;  -- Get the brand with the highest spend
  ```
 
-![fetch_rewards](images/Query5Results.png)
+![fetch_rewards](images/Query4Results.png)
 
 ### Notes:
 1.	Since the data is from 2021, past 6 month is calculated from the latest date in the “createdDate_converted”. 
@@ -126,7 +126,7 @@ LIMIT 5;  -- Get the brand with the highest spend
     higher spend than $196.98 but do not have a brand name, only a barcode. It would be useful for the business to find them.
 4.	From this result we can see that “Cracker Barrel Cheese” has the most spend, $196.88.
 
-## Query 6: Which brand has the most transactions among users who were created within the past 6 months?
+## Query 5: Which brand has the most transactions among users who were created within the past 6 months?
 ```
 SELECT 
     b.name AS brand_name, i.barcode,
@@ -154,7 +154,7 @@ ORDER BY
 LIMIT 1;  -- Get the brand with the highest number of transactions
 ```
 
-![fetch_rewards](images/Query6Results.png)
+![fetch_rewards](images/Query5Results.png)
 
 ### Notes:
 1.	Since the data is from 2021, past 6 month is calculated from the latest date in the “createdDate_converted”. 
