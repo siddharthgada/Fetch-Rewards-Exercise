@@ -57,4 +57,4 @@ Using Python and SQL, I analyzed the dataset for potential data quality issues, 
 
 **Siddharth Gada**  
 📧 Email: gadasiddharth@gmail.com 
-🔗 LinkedIn: [[your-link]  ](https://www.linkedin.com/in/siddharthgada/)
+🔗 LinkedIn: [[[[your-link]  ]](https://www.linkedin.com/in/siddharthgada/)
