@@ -52,3 +52,9 @@ Using Python and SQL, I analyzed the dataset for potential data quality issues, 
 📌 Effective Communication:<br>
   - Developed clear and concise business reports and email communication for non-technical stakeholders.<br>
   - Practised translating technical findings into actionable business recommendations.<br>
+
+  ## 👤 Author
+
+**Siddharth Gada**  
+📧 Email: gadasiddharth@gmail.com 
+🔗 LinkedIn: [[your-link]  ](https://www.linkedin.com/in/siddharthgada/)
