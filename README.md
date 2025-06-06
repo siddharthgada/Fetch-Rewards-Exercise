@@ -56,5 +56,5 @@ Using Python and SQL, I analyzed the dataset for potential data quality issues, 
   ## 👤 Author
 
 **Siddharth Gada**  
-📧 Email: gadasiddharth@gmail.com 
-🔗 [[LinkedIn]  ](https://www.linkedin.com/in/siddharthgada/)
+📧 Email: gadasiddharth@gmail.com <br>
+🔗 [LinkedIn] (https://www.linkedin.com/in/siddharthgada/)
